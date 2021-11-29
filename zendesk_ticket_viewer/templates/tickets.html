@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zendesk Tickets</title>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+        "pagingType": "full_numbers",
+        "ordering": false,
+        "iDisplayLength": 25,
+        bLengthChange: false
+    } );
+} );
+$('table').dataTable({searching: false, paging: false, info: false});
+</script>
+    <style>
+        .dataTables_filter, .dataTables_info { display: none; }
+    </style>
+</head>
+<body>
+<div style="text-align:center;"><h1> TICKET VIEWER </h1></div>
+<div><h2>These are the tickets:</h2></div>
+
+<table  id="example" class="display" width="100%" cellspacing="0">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">SUBJECT</th>
+        <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in subject %}
+    <tr>
+
+            <th scope="row">{{i.id}}</th>
+            <td>{{i.subject}}</td>
+            <td><form action="{% url 'ticket' %} " method="POST">
+                {% csrf_token %}
+                <input type="hidden" value="{{i.id}}" name="id">
+                <input type="hidden" value="{{i.subject}}" name="subj">
+                <input type="hidden" value="{{i.description}}" name="description">
+                <input type="submit" value="Open ticket">
+                </form>
+            </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</body>
+</html>

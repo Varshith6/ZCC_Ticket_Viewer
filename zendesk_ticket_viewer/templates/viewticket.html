@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket</title>
+</head>
+<body>
+<div style="text-align:center;"><h1> TICKET VIEWER </h1></div>
+<div>REQUESTER ID: {{ticketid}}</div>
+<br>
+<div>SUBJECT: {{subject}}</div>
+<br>
+<div>{{description}}</div>
+<br>
+<div style="text-align:center;"><a href="{% url 'view_tickets' %}">BACK TO TICKETS PAGE</a></div>
+</body>
+</html>

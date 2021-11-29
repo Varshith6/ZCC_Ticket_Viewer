@@ -1,0 +1,8 @@
+Libraries and dependencies needed for this project-
+
+Django Framework - version = 3.2.9
+
+django.shortcuts
+requests
+requests.auth.HTTPBasicAuth
+django.http.HttpResponse
